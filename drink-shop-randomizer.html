@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天喝什麼？</title>
+    <style>
+        body {
+            font-family: '微軟正黑體', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        #result {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            min-height: 2em;
+            color: #2196F3;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>今天喝什麼？</h1>
+        <div id="result"></div>
+        <button onclick="selectRandomShop()">隨機選擇飲料店</button>
+    </div>
+
+    <script>
+        const drinkShops = [
+            "可不可",
+            "初韻",
+            "花火禾茶",
+            "50嵐",
+            "清心福全",
+            "五桐號",
+            "迷克夏",
+            "得正",
+            "馬祖奶茶",
+            "龜記",
+            "Tea's原味",
+            "茗茗究市",
+            "黛黛茶",
+            "吾奶王",
+            "鮮喝道"
+        ];
+
+        function selectRandomShop() {
+            const resultElement = document.getElementById('result');
+            const randomIndex = Math.floor(Math.random() * drinkShops.length);
+            resultElement.textContent = `今天就去 ${drinkShops[randomIndex]} 吧！`;
+        }
+    </script>
+</body>
+</html>
