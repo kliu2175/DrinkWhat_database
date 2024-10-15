@@ -1,22 +1,20 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD6SfXNI6J7c27_mauQbXsZTA-90qvZxH0",
-  authDomain: "drinkwhat-572d9.firebaseapp.com",
-  databaseURL: "https://drinkwhat-572d9-default-rtdb.firebaseio.com/",
-  projectId: "drinkwhat-572d9",
-  storageBucket: "drinkwhat-572d9.appspot.com",
-  messagingSenderId: "727015603645",
-  appId: "1:727015603645:web:e9e50f964b88e87384a6d4",
-  measurementId: "G-HJ19B1JH90"
-};
+    apiKey: "AIzaSyD6SfXNI6J7c27_mauQbXsZTA-90qvZxH0",
+    authDomain: "drinkwhat-572d9.firebaseapp.com",
+    databaseURL: "https://drinkwhat-572d9-default-rtdb.firebaseio.com/",
+    projectId: "drinkwhat-572d9",
+    storageBucket: "drinkwhat-572d9.appspot.com",
+    messagingSenderId: "727015603645",
+    appId: "1:727015603645:web:e9e50f964b88e87384a6d4",
+    measurementId: "G-HJ19B1JH90"
+  };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 const ordersRef = database.ref('orders');
 const lockRef = database.ref('lockState');
-
-
 
 const drinkShops = [
     "可不可",
@@ -201,4 +199,5 @@ ordersRef.on('value', (snapshot) => {
 
     totalPriceElement.textContent = totalPrice;
 });
+
 
