@@ -1,82 +1,115 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>今天喝什麼？</title>
-    <style>
-        body {
-            font-family: '微軟正黑體', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 2rem;
-        }
-        #result {
-            font-size: 1.5rem;
-            margin: 1rem 0;
-            min-height: 2em;
-            color: #2196F3;
-        }
-        button {
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1976D2;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/base.css">
+    <link rel="stylesheet" href="Css/Drink.css">
+    <link rel="stylesheet" href="Css/index.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>今天喝什麼？</h1>
-        <div id="result"></div>
-        <button onclick="selectRandomShop()">隨機選擇飲料店</button>
+    <div class="random">
+        <div class="container">
+            <h1>今天喝什麼？</h1>
+            <div id="result"></div>
+            <img id="menuImage" src="" alt="" style="display:none;"> <!-- 圖片預設隱藏 -->
+            <button id="randombutton" onclick="selectRandomShop()">隨機選擇飲料店</button>
+            <button id="lock" onclick="lockSelection()" style="display: none;">鎖定</button>
+        </div>
     </div>
 
-    <script>
-        const drinkShops = [
-            "可不可",
-            "初韻",
-            "花火禾茶",
-            "50嵐",
-            "清心福全",
-            "五桐號",
-            "迷克夏",
-            "得正",
-            "馬祖奶茶",
-            "龜記",
-            "Tea's原味",
-            "茗茗究市",
-            "黛黛茶",
-            "吾奶王",
-            "鮮喝道"
-        ];
 
-        function selectRandomShop() {
-            const resultElement = document.getElementById('result');
-            const randomIndex = Math.floor(Math.random() * drinkShops.length);
-            resultElement.textContent = `今天就去 ${drinkShops[randomIndex]} 吧！`;
-        }
+    <!-- 點餐區 -->
+    <div class="order wrapper">
+        <h4>ORDER HERE</h4>
+        <form id="orderForm">
+            <label><b>姓名：</b><input type="text" id="name" placeholder="你是誰？" required></label>
+            <label><b>品項：</b><input type="text" id="item" placeholder="點什麼？" required></label>
+            <label><b>加料區：</b><input type="text" id="addition" placeholder="加料哦"></label>
+            <label>
+                <b>尺寸：</b>
+                <select id="size">
+                    <option selected>L</option>
+                    <option>M</option>
+                </select>
+            </label>
+            <label>
+                <b>甜度：</b>
+                <select id="sugar">
+                    <option>無糖</option>
+                    <option selected>微糖</option>
+                    <option>半糖</option>
+                    <option>少糖</option>
+                    <option>全糖</option>
+                </select>
+            </label>
+            <label>
+                <b>冰量：</b>
+                <select id="ice">
+                    <option>去冰</option>
+                    <option selected>微冰</option>
+                    <option>少冰</option>
+                    <option>正常冰</option>
+                    <option>溫</option>
+                    <option>熱</option>
+                </select>
+            </label>
+            <label>
+                <b>金額：</b>
+                <input type="number" id="price" placeholder="$$$" min="0" required>
+            </label>
+            <br><br><br>
+            <button type="submit">送出</button>
+        </form>
+    </div>
+    <!-- 訂餐結果顯示區 -->
+    <div class="view">
+        <table class="wrapper">
+            <thead>
+                <tr>
+                    <th>序</th>
+                    <th>姓名</th>
+                    <th>品項名</th>
+                    <th>加料</th>
+                    <th>尺寸</th>
+                    <th>甜度</th>
+                    <th>冰量</th>
+                    <th>金額</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                <!-- Orders will be inserted here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>加總：</td>
+                    <td id="totalPrice">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+    <script>
+        
+        
     </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Our application script -->
+    <script src="Js/App.js"></script>
 </body>
+
 </html>
