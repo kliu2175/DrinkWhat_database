@@ -1,17 +1,17 @@
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAUUlBk_1Qynuf57TjpCa1iVwF551VCHTc",
-    authDomain: "orderdemo-948c3.firebaseapp.com",
-    projectId: "orderdemo-948c3",
-    storageBucket: "orderdemo-948c3.appspot.com",
-    messagingSenderId: "799614623104",
-    appId: "1:799614623104:web:92afecd0123b25b5c33565",
-    measurementId: "G-ZFVTVVKK3S"
+  apiKey: "AIzaSyD6SfXNI6J7c27_mauQbXsZTA-90qvZxH0",
+  authDomain: "drinkwhat-572d9.firebaseapp.com",
+  projectId: "drinkwhat-572d9",
+  storageBucket: "drinkwhat-572d9.appspot.com",
+  messagingSenderId: "727015603645",
+  appId: "1:727015603645:web:e9e50f964b88e87384a6d4",
+  measurementId: "G-HJ19B1JH90"
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const ordersRef = database.ref('orders');
 const lockRef = database.ref('lockState');
 
